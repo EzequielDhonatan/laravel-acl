@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index(Post $post)
     {
-        // $posts = $post->all();
-        $posts = $post->where('user_id', auth()->user()->id)->get();
+        $posts = $post->all();
+        // $posts = $post->where('user_id', auth()->user()->id)->get();
         
         return view('home', compact('posts'));
     }
