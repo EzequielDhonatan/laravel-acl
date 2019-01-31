@@ -7,6 +7,7 @@
         <h1>{{ $post->title }}</h1>
         <p>{{ $post->description }}</p>
         <b>Author: {{ $post->user->name }}</b>
+        <a href="{{ url("/post/$post->id/update") }}">Editar</a>
         <hr />
     @empty
         <p class="text-center">Nenhum Post Cadastrado!</p>
