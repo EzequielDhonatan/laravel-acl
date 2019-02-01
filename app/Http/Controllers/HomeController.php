@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Post;
 use Gate;
+use PhpParser\Node\Stmt\Foreach_;
 
 class HomeController extends Controller
 {
@@ -42,5 +43,22 @@ class HomeController extends Controller
             abort(403, 'Unauthorized');
 
         return view('post-update', compact('post'));
+    }
+
+    public function rolesPermissions()
+    {
+        $nameUser = auth()->user()->name;
+        echo("<h1>{$nameUser}</h1>");
+        
+        foreach ( auth()->user()->roles as $role ) {
+            echo "<b>$role->name</b> -> ";
+            
+            $permissions = $role->permissions;
+            foreach( $permissions as $permission ) {
+                echo " $permission->name , ";
+            }
+            
+            echo '<hr>';
+        }
     }
 }
