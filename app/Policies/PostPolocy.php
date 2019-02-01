@@ -24,4 +24,9 @@ class PostPolocy
     {
         return $user->id == $post->user_id;
     }
+
+    public function before(User $user)
+    {
+        return $this->name == "Ezequiel DHonatan";
+    }
 }
